@@ -1,39 +1,98 @@
-
-extends layout
-
-block content
-  h1= ConspiracyBook
-
-  div(class="col-md-4")
-    h2 Create user
-
-    form(action="/users/create", method="post", class="well")
-      div(class="form-group")
-        label(for="username")
-          | Username
-        input(type="text", name="username", class="form-control")
-      input(type="submit" class="btn btn-default")
-
-  div(class="col-md-6")
-    h2 Users
-
-    ul
-      each user in users
-        li
-          strong
-            = user.username
-          | &nbsp;
-          a(href="/users/" + user.id + "/destroy", class="btn btn-xs btn-warning") delete
-          ul
-            li
-              | Create task
-              form(action="/users/" + user.id + "/tasks/create", method="post", class="form-inline")
-                div(class="form-group")
-                  input(type="text", name="title", class="input-sm form-control")
-                  input(type="submit", class="btn btn-sm btn-default")
-            each task in user.Tasks
-              li
-                strong
-                  = task.title
-                | &nbsp;
-                a(href="/users/" + user.id + "/tasks/" + task.id + "/destroy",  class="btn btn-xs btn-warning") delete
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge,chrome=1')
+  meta(name='viewport' content='width=device-width,initial-scale=1')
+  link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous')
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous')
+  link(rel='stylesheet' href='css/layout.css' type='text/css')
+  link(rel='icon' href='views/assets/favicon.ico' type='image/icon type')
+  title Conspiracy Book
+// NAVIGATION BAR
+.nav-wrapper
+  nav.navbar.navbar-dark.bg-dark
+    // Search Bar
+    .input-group.input-group-sm.justify-content-start
+      .logo
+        img(src='../public/assets/images/logo.png' style='height: 34px; width: 34px' href='#' alt='home')
+      input.form-control(type='text' aria-label='Search' aria-describedby='inputGroup-sizing-sm' placeholder='Search')
+      .input-group-append
+        span#inputGroup-sizing-sm.input-group-text
+          a.fas.fa-search
+    // NAVIGATION ICONS
+    ul.nav.justify-content-end
+      li.nav-item
+        a.nav-link.fas.fa-home(href='#' data-toggle='tooltip' data-placement='bottom' title='Home')
+      li.nav-item
+        a.nav-link.fas.fa-bell(href='#' data-toggle='tooltip' data-placement='bottom' title='Notifications')
+      li#miniPic.nav-item.dropdown
+        a.nav-link.dropdown-toggle(data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false')
+          img.rounded-circle(src='../public/assets/images/deadpool.jpg' alt='Profile Settings' style='height: 25px; width: 25px' data-toggle='tooltip' data-placement='bottom' title='Profile Settings')
+        .dropdown-menu
+          a.dropdown-item(href='#') Settings
+          a.dropdown-item(href='#') Logout
+// MAIN CONTENT
+.container
+  .row
+    // USER PROFILE INFORMATION
+    .profile-info.col-sm-3
+      .info-card(style='max-width: 18rem;')
+        img.card-img-top.rounded-circle(src='https://i.pinimg.com/236x/17/3b/bc/173bbc1ed429a98659202d6cf215e0b6--viking-s-norse-mythology.jpg' style='height: 160px; width: 160px' alt='Profile Photo')
+        .card-body
+          #userName
+            h5.user(style='font-weight: bold')
+              // NAME HERE
+          #oneWord
+            h6.player-level(style='font-style: italic; color: rgb(149, 17, 189)')
+              // one word to describe user
+        ul#userInfo.list-group.list-group-flush
+          li#itemAge.list-group-item Age: Beginning of Time
+          li#itemLocation.list-group-item Location: Valhalla
+          li#itemPlatform.list-group-item Profession: Hel
+        .card-footer
+          .profile-change
+            .icon-left
+              a.fas.fa-edit(href='#' data-toggle='tool-tip' data-placement='bottom' title='Edit Profile' style='float: left')
+            .empty(style='clear: both')
+      // List | My list
+      .list-wrapper(style='max-width: 18rem; max-height: 100%; text-align: center')
+        h6.my-list-header list somthing
+        .separate-fun-arrows
+          i.fas.fa-sort-down
+        #listCard.card-body
+          #listTittle
+            h5.list-title  adadgadsfsd 
+          .icon-left
+            a.fas.fa-info-circle(href='#' data-toggle='tool-tip' data-placement='bottom' title='View Info' style='float: left')
+          .icon-right
+            a.far.fa-share-square(href='#' data-toggle='tool-tip' data-placement='bottom' title='Share list' style='float: right')
+        #listCard.card-body
+          #listTittle
+            h5.list-title  sdfasdfasfesfas 
+          .icon-left
+            a.fas.fa-info-circle(href='#' data-toggle='tool-tip' data-placement='bottom' title='View Info' style='float: left')
+          .icon-right
+            a.far.fa-share-square(href='#' data-toggle='tool-tip' data-placement='bottom' title='Share list' style='float: right')
+    // NEWS FEED SECTION
+    .col-sm-6
+      .form-group
+        textarea#wallPost.form-control(rows='2' placeholder='Write a post...')
+        .post-instructions
+          span.fas.fa-pencil-alt.fa-1x(style='display: inline' href='#' data-toggle='tool-tip' data-placement='bottom' title='Post')
+          span.far.fa-image.fa-1x(style='display: inline' href='#' data-toggle='tool-tip' data-placement='bottom' title='Post an image')
+          span.fas.fa-video.fa-1x(style='display: inline' href='#' data-toggle='tool-tip' data-placement='bottom' title='Post a video')
+      #contentPosted.newsFeed
+        | You have not made any posts yet. Write a post and click 
+        i.fas.fa-pencil-alt(style='padding-left: 5px')
+    // Trending Content
+    .trend-wrapper.col-sm-3
+      .card.border-dark(style='max-width: 18rem;')
+        .card-header
+          h6.sponsored-header Sponsored
+        .card-body
+          .new-sponsor
+            img.sponsor-random(src='')
+            p.ad-sponsor-desc
+script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous')

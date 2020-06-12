@@ -1,0 +1,22 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  title Conspiracy Book
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css')
+  link(rel='stylesheet' href='css/login.css' type='text/css')
+  link(href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet')
+.container.text-center
+  img(src='views/assets/cb-box-logo.svg' alt='logo')
+  form(action='/homepage' ,='' method='GET')
+    div
+      input#usernameForm.form-control.txtBox(type='text' placeholder='Username')
+    div
+      input#passForm.form-control.txtBox(type='password' placeholder='Password')
+    div
+      button#loginBtn.btn.btn-secondary.mb-2.customBtn(type='submit' action='/homepage' ,='' method='GET') Log In
+      button#createAccBtn.btn.btn-secondary.mb-2.customBtn(type='submit' data-toggle='modal' data-target='#accModal') Create Account
+  script(src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous')
+  script(src='/assets/js/login.js')

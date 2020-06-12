@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const Pusher = require('pusher');
-const config = require('./config');
-const htmlGenerator = require('./html-generator');
+const config = require('./config/config.js');
+// const htmlGenerator = require('./html-generator');
 
 const app = express();
 const port = config.PORT || 3030;
