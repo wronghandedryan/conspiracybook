@@ -1,0 +1,32 @@
+{
+  "name": "conspiracybook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm run test",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "pug": "^3.0.0",
+    "pusher": "^3.0.1",
+    "pusher-js": "^6.0.3",
+    "sequelize": "^5.21.12",
+    "serve-favicon": "^2.5.0",
+    "tedious": "^8.3.0"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^8.0.0",
+    "nodemon": "^2.0.4"
+  }
+}

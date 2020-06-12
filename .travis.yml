@@ -1,0 +1,6 @@
+language: node.js,
+install: skip,
+deploy:
+  provider: heroku
+  api_key:
+    secure: "YOUR ENCRYPTED API KEY"
