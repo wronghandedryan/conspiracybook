@@ -1,5 +1,5 @@
 // Set up MySQL connection.
-var mysql2 = require("mysql2");
+var mysql = require("mysql2");
 var sequelize = require('sequalize');
 var connection = mysql.createConnection({
   host: "localhost",

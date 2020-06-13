@@ -4,7 +4,7 @@
   "main": "app.js",
   "scripts": {
     "test": "npm run test",
-    "start": "node server.js"
+    "start": "app.js"
   },
   "author": "",
   "license": "ISC",
@@ -21,8 +21,6 @@
     "mysql2": "^2.1.0",
     "node-pre-gyp": "^0.15.0",
     "pug": "^3.0.0",
-    "pusher": "^3.0.1",
-    "pusher-js": "^6.0.3",
     "sequelize": "^5.21.12",
     "serve-favicon": "^2.5.0",
     "tedious": "^8.3.0"

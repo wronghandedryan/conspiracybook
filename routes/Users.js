@@ -4,11 +4,9 @@ const users = express.Router();
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-// @ts-ignore
-const { default: Users } = require('../models/Users');
 
 // @ts-ignore
-const User = require(../models/User)
+const User = require('../models/User')
 users.use(cors());
 
 process.env.SECRET_KEY = 'secret'
@@ -52,7 +50,7 @@ users.post('/register', (req, res) => {
             .catch((err) => {
                 // @ts-ignore
                 res.send('error: ', err)
-            })
+            });
         })
     // @ts-ignore
     })

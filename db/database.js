@@ -2,8 +2,9 @@ const Sequelize = require('sequelize');
 
 const db = {}
 
-const sequelize = new sequelize('conspbook_db', 'root', 'root'{
+const sequelize = new Sequelize('conspbook_db', 'root', 'root', {
     host: "localhost",
+    dialect: 'mysql',
     operatorAliases: false,
 
     pool: {
@@ -13,7 +14,7 @@ const sequelize = new sequelize('conspbook_db', 'root', 'root'{
         idle: 1000,
     }
 
-})
+});
 
 db.sequelize = sequelize
 db.Sequelize = Sequelize
