@@ -37,7 +37,7 @@ function objToSql(ob) {
 
   // translate array of strings to a single comma-separated string
   return arr.toString();
-}
+};
 
 // Object for all our SQL statement functions.
 var orm = {
