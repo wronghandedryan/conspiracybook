@@ -1,25 +1,26 @@
 {
   "name": "conspiracybook",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "npm run test",
-    "start": "node server.js"
+    "start": "app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "debug": "^4.1.1",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
+    "node-pre-gyp": "^0.15.0",
     "pug": "^3.0.0",
-    "pusher": "^3.0.1",
-    "pusher-js": "^6.0.3",
     "sequelize": "^5.21.12",
     "serve-favicon": "^2.5.0",
     "tedious": "^8.3.0"
@@ -28,5 +29,14 @@
     "expect.js": "^0.3.1",
     "mocha": "^8.0.0",
     "nodemon": "^2.0.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wronghandedryan/conspiracybook.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wronghandedryan/conspiracybook/issues"
+  },
+  "homepage": "https://github.com/wronghandedryan/conspiracybook#readme",
+  "description": ""
 }

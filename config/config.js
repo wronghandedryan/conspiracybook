@@ -1,10 +1,10 @@
 module.exports = {
     development: {
-        dialect: "sqlite",
+        dialect: "mysql",
         storage: "./db.development.sqlite"
     },
     test: {
-        dialect: "sqlite",
+        dialect: "mysql",
         storage: ":memory:"
     },
     production: {
