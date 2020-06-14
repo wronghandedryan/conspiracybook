@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
-
-const db = {}
+const db = {};
 
 const sequelize = new Sequelize('conspbook_db', 'root', 'root', {
     host: "localhost",

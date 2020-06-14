@@ -1,8 +1,18 @@
 const Sequelize = require('sequelize');
-const { sequelize } = require('.');
+const { sequelize } = require('mysql');
 const db = require('../config/database.js');
+const DataTypes = require('mysql');
 
-module.exports = db.Sequelize.define([
+// var app = sequelize.define('conspiracybook', {
+//     id: sequelize.STRING,
+//     user_name: sequelize.STRING,
+//     first_name: sequelize.STRING,
+//     last_name: sequelize.STRING,
+//     email: sequelize.STRING,
+//     passwordHash: sequelize.STRING,
+
+// })
+const user = db.Sequelize.define([
     'Users',
     {
         id: {
@@ -44,3 +54,5 @@ module.exports = db.Sequelize.define([
     }
 
 ]);
+
+module.exports
