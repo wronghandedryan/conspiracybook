@@ -17,7 +17,6 @@
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.7-alpha.3",
-    "express-fileuploader": "0.0.7",
     "fine-uploader": "^5.16.2",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
@@ -26,7 +25,7 @@
     "mysql2": "^2.1.0",
     "node-pre-gyp": "^0.15.0",
     "pug": "^3.0.0",
-    "sequelize": "^5.21.12",
+    "sequelize": "^5.21.13",
     "serve-favicon": "^2.5.0",
     "tedious": "^8.3.0"
   },
