@@ -18,4 +18,5 @@ const sequelize = new Sequelize('conspbook_db', 'root', 'root', {
 db.sequelize = sequelize
 db.Sequelize = Sequelize
 
+
 module.exports = db

@@ -1,19 +1,22 @@
-var Sequelize = require('sequelize-mysql').sequelize
-var postgres = require('sequelize-mysql').mysql
+const Sequelize = require('sequelize');
+const mysql = require('mysql');
+const config = require('../config/database.js');
 
-var db = new Sequelize('user_db', 'root', 'root', {
+var db = new Sequelize('conspbook_db', 'root', 'root', {
     dialect: 'mysql'
 })
 
 
 var models = [
-    'user'
+    'Users'
 ];
 
-models.forEach(function (model) {
-    module.exports[model] = db.import(__dirname + '/' + model);
+models.forEach(function (_Users) {
+    app.exports[model] = db.import(__dirname + '/' + model);
 });
 
 
 
 exports.db = db;
+
+module.exports('db');
