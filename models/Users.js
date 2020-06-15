@@ -1,10 +1,9 @@
-const Sequelize = require('sequelize');
-const { sequelize } = require('.');
+const Sequelize = require('Sequelize');
+// const { sequelize } = require('.');
 const db = require('../config/database.js');
 
-module.exports = db.Sequelize.define([
-    'Users',
-    {
+module.exports = (sequelize, Sequelize) => {
+    const users = sequelize.define("user", {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -43,4 +42,4 @@ module.exports = db.Sequelize.define([
         timestamps: false
     }
 
-]);
+)};
