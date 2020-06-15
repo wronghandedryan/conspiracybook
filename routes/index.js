@@ -1,7 +1,7 @@
 const {
     Router
 } = require('express');
-const controllers = import('../controllers');
+const controllers = require('../controllers');
 
 const router = Router();
 
@@ -19,4 +19,4 @@ router.put('/posts/:postId', controllers.updatePost);
 
 router.delete('/posts/:postId', controllers.deletePost);
 
-const module.exports('routes');
+module.exports('routes');

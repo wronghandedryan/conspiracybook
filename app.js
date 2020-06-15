@@ -1,16 +1,20 @@
 const express = require('express');
 const routes = require('./routes');
 const controllers = require('./controllers');
-//const db = require('./models');
+const db = require('./models');
 const bodyParser = require('body-parser');
 const pug = require('pug');
-require("dotenv").config();
+const faker = require('faker');
+const dotenv = require("dotenv").config('env.js');
+const _ = require('lodash');
+
 
 // API ENDPOINTS
 
 const app = express();
 app.use(bodyParser.json());
 app.set('view engine', 'pug');
+app.use('pug');
 
 apiPost(app, db);
 apiAuthor(app, db);
@@ -34,4 +38,9 @@ db.sequelize.sync().then(() => {
     app.listen(8080, () => console.log("App listening on port 8080!"));
 });
 
-module.import { index.js } from "models";
+module.import('index', './routes/');
+module.import('index', "./models");
+module.import('index', './controllers/');
+module.import('connection', './config');
+module.import('models', './db/');
+module.import('./config/env');
