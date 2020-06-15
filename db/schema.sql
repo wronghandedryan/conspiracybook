@@ -1,5 +1,5 @@
 ### Schema
-DROP DATABASE IF EXISTS conspbook_db;
+
 CREATE DATABASE conspbook_db;
 CREATE TABLE Users (
 	id BIGINT (20),
@@ -22,6 +22,22 @@ messageTxt TEXT,
 createdAt DATETIME,
 );
 CREATE TABLE Posts (
+	id BIGINT (20),
+	authorId BIGINT (20),
+	parentId BIGINT (20),
+	title VARCHAR (75),
+	metaTitle VARCHAR (100),
+	slug VARCHAR (100),
+	summary TINYTEXT,
+	published TINYINT (1),
+	createdAt DATETIME,
+	updatedAt DATETIME,
+	publishedAt DATETIME,
+	content TEXT,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE Feeds (
 	id BIGINT (20),
 	authorId BIGINT (20),
 	parentId BIGINT (20),

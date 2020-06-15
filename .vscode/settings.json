@@ -1,0 +1,41 @@
+{
+    "cSpell.enableFiletypes": [
+        "!typescript",
+        "!typescriptreact",
+        "sql",
+        "javascript",
+        "es6",
+        "mysql"
+    ],
+    "sqltools.connections": [
+        {
+            "askForPassword": false,
+            "database": "",
+            "driver": "MySQL",
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "name": "conspbook_db",
+            "password": "root",
+            "port": 8889,
+            "previewLimit": 50,
+            "server": "127.0.0.1",
+            "username": "root"
+        },
+        {
+            "askForPassword": false,
+            "connectionTimeout": 50000,
+            "database": "conspbook_db",
+            "driver": "MySQL",
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "name": "conspbook_db",
+            "password": "root",
+            "port": 8889,
+            "previewLimit": 50,
+            "server": "localhost",
+            "username": "root"
+        }
+    ]
+}

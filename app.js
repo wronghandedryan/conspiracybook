@@ -1,69 +1,37 @@
-
 const express = require('express');
-const fs = require('fs');
-const path = require('path');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
+const routes = require('./routes');
+const controllers = require('./controllers');
+//const db = require('./models');
 const bodyParser = require('body-parser');
-const fileUpload = require('express-fileupload');
-const multer = require('multer');
-const sequelize = ('sequelize');
-const config = require('./config/config');
-const env = require('./.env'); 
-const routes = require('./routes/index.js');
-const users = require('./routes/Users.js');
-const morgan = require('morgan');
+const pug = require('pug');
+require("dotenv").config();
 
-var app = express();
+// API ENDPOINTS
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
+const app = express();
+app.use(bodyParser.json());
 app.set('view engine', 'pug');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors());
-app.use(morgan('dev'));
-app.use('/', routes);
-app.use('/users', users);
-app.use(fileUpload({
-    createParentPath: true
-}));
+apiPost(app, db);
+apiAuthor(app, db);
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-require('./upload/upload.js')(app);
-// error handler
-// no stacktraces leaked to user unless in development environment
-app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: (app.get('env') === 'development') ? err : {}
-    });
+db.sequelize.sync().then(() => {
+    // populate author table with dummy data
+    db.author.bulkCreate(
+        times(10, () => ({
+            firstName: faker.name.firstName(),
+            lastName: faker.name.lastName()
+        }))
+    );
+    // populate post table with dummy data
+    db.post.bulkCreate(
+        times(10, () => ({
+            title: faker.lorem.sentence(),
+            content: faker.lorem.paragraph(),
+            authorId: random(1, 10)
+        }))
+    );
+    app.listen(8080, () => console.log("App listening on port 8080!"));
 });
 
-sequelize
-    .authenticate()
-    .then(() => {
-        console.log('Connection has been established successfully.'); // eslint-disable-line no-console
-    })
-    .catch((err) => {
-        console.error('Unable to connect to the database:', err); // eslint-disable-line no-console
-    });
-
-module.exports = {
-    app,
-    sequelize
-};
-
-module.exports = app;
+module.import { index.js } from "models";

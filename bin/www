@@ -4,10 +4,13 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('express-sequelize');
-var http = require('http');
-var models = require('../models');
+const app = require('../app')
+const debug = require('debug')('express-sequelize')
+const http = require('http')
+const models = require('../models/')
+const config = require('../config')
+const routes = require('routes')
+
 
 /**
  * Get port from environment and store in Express.
@@ -24,6 +27,7 @@ models.sequelize.sync().then(function() {
   /**
    * Listen on provided port, on all network interfaces.
    */
+  "use strict"
   server.listen(port, function() {
     debug('Express server listening on port ' + server.address().port);
   });
@@ -34,7 +38,7 @@ models.sequelize.sync().then(function() {
 /**
  * Normalize a port into a number, string, or false.
  */
-
+"use-strict"
 function normalizePort(val) {
   var port = parseInt(val, 10);
 
@@ -54,7 +58,7 @@ function normalizePort(val) {
 /**
  * Event listener for HTTP server "error" event.
  */
-
+"use-strict"
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
@@ -82,9 +86,10 @@ function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
-
+"use-strict"
 function onListening() {
-  var addr = server.address();
+  "use strict"
+  const addr = server.address();
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
