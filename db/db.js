@@ -1,21 +1,26 @@
-import Sequelize from 'sequelize'
+const Sequelize = require('sequelize');
 
-var db = new Sequelize('conspbook_db', 'root', 'root', {
+var sequelize = new Sequelize('conspbook_db', 'root', 'root', {
+    host: '127.0.0.1',
+    port: '8889',
     dialect: 'mysql'
-})
-
+});
 
 var models = [
-    'Users'
+    'User',
+    'author',
+    'post',
+    'tag'
 ];
-
-models.forEach(function (_Users) {
-    app.exports[model] = db.import(__dirname + '/' + 'user.js')
+module.exports = {}
+models.forEach(function (name) {
+    module.exports[name] = sequelize.import(__dirname + `/../models/${name}.js`);
 });
 
 
+//not sure!!!!!!!!!!!!!!!!
+//const _db = db;
+//export { _db as db };
 
-const _db = db;
-export { _db as db };
-
-module.exports('db');
+// module.exports = db;
+module.exports.sequelize = sequelize;

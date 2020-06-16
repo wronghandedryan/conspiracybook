@@ -37,5 +37,6 @@
             "server": "localhost",
             "username": "root"
         }
-    ]
+    ],
+    "arduino.additionalUrls": ""
 }
