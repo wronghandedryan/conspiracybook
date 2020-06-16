@@ -1,3 +1,6 @@
+
+
+
 module.exports = (sequelize, DataTypes) => {
     const Author = sequelize.define('author', {
         id: {
@@ -13,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Author.associate = (models) => {
         Author.hasMany(models.post);
-    };
+    }
 
     return Author;
 }

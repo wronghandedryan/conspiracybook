@@ -1,9 +1,10 @@
 const Sequelize = require('sequelize');
-var sequelize = new Sequelize('conspbook_db', 'root', 'root', {
-            host: 'localhost',
-            port: '8889',
-            dialect: 'mysql'
-});
+
+// var sequelize = new Sequelize('conspbook_db', 'root', 'root', {
+//             host: '127.0.0.1',
+//             port: '8889',
+//             dialect: 'mysql'
+// });
 const models = require('../models');
 
 const createPost = async (req, res) => {
@@ -22,18 +23,18 @@ module.exports = {
 }
 
 
-const createPost = async (req, res) => {
-    try {
-        const post = await models.Post.create(req.body);
-        return res.status(201).json({
-            post,
-        });
-    } catch (error) {
-        return res.status(500).json({
-            error: error.message
-        })
-    }
-}
+// const createPost = async (req, res) => {
+//     try {
+//         const post = await models.Post.create(req.body);
+//         return res.status(201).json({
+//             post,
+//         });
+//     } catch (error) {
+//         return res.status(500).json({
+//             error: error.message
+//         })
+//     }
+//}
 
 
 
@@ -94,31 +95,31 @@ const getPostById = async (req, res) => {
     }
 }
 
-const updatePost = async (req, res) => {
-    try {
-        const {
-            postId
-        } = req.params;
-        const [updated] = await models.Post.update(req.body, {
-            where: {
-                id: postId
-            }
-        });
-        if (updated) {
-            const updatedPost = await models.Post.findOne({
-                where: {
-                    id: postId
-                }
-            });
-            return res.status(200).json({
-                post: updatedPost
-            });
-        }
-        throw new Error('Post not found');
-    } catch (error) {
-        return res.status(500).send(error.message);
-    }
-};
+// const deletePost = async (req, res) => {
+//     try {
+//         const {
+//             postId
+//         } = req.params;
+//         const [updated] = await models.Post.update(req.body, {
+//             where: {
+//                 id: postId
+//             }
+//         });
+//         if (updated) {
+//             const updatedPost = await models.Post.findOne({
+//                 where: {
+//                     id: postId
+//                 }
+//             });
+//             return res.status(200).json({
+//                 post: updatedPost
+//             });
+//         }
+//         throw new Error('Post not found');
+//     } catch (error) {
+//         return res.status(500).send(error.message);
+//     }
+// };
 
 
 const updatePost = async (req, res) => {
@@ -169,7 +170,7 @@ const deletePost = async (req, res) => {
 module.exports = {
     createPost,
     getAllPosts,
-    deletePosts,
-    updatePosts,
+    deletePost,
+    updatePost,
 }
 

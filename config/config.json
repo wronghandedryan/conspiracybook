@@ -1,0 +1,13 @@
+{
+    "server": {
+        "dialect": "mysql",
+        "host": "localhost",
+        "database": "conspbook_db",
+        "username": "root",
+        "password": "root",
+        "define": {}
+    },
+    "models": {
+        "root": "../models"
+    }
+}

@@ -19,7 +19,9 @@
     "sqlite3": "https://github.com/mapbox/node-sqlite3/tarball/master"
   },
   "devDependencies": {
+    "eslint": "^7.2.0",
     "faker": "^4.1.0",
+    "jshint": "^2.11.1",
     "lodash.random": "^3.2.0",
     "lodash.times": "^4.3.2",
     "nodemon": "^2.0.4",
