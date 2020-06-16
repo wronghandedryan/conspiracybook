@@ -1,46 +1,46 @@
+const express = require('express');
+const routes = require('./routes');
+const controllers = require('./controllers');
+const db = require('./models');
+const bodyParser = require('body-parser');
+const pug = require('pug');
+const faker = require('faker');
+const dotenv = require("dotenv").config('env.js');
+const _ = require('lodash');
 
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
 
-var routes = require('./routes/index.js');
-var users = require('./routes/Users.js');
+// API ENDPOINTS
 
-var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
+const app = express();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.set('view engine', 'pug');
+app.use('pug');
 
-app.use('/', routes);
-app.use('/users', users);
+apiPost(app, db);
+apiAuthor(app, db);
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+db.sequelize.sync().then(() => {
+    // populate author table with dummy data
+    db.author.bulkCreate(
+        times(10, () => ({
+            firstName: faker.name.firstName(),
+            lastName: faker.name.lastName()
+        }))
+    );
+    // populate post table with dummy data
+    db.post.bulkCreate(
+        times(10, () => ({
+            title: faker.lorem.sentence(),
+            content: faker.lorem.paragraph(),
+            authorId: random(1, 10)
+        }))
+    );
+    app.listen(8080, () => console.log("App listening on port 8080!"));
 });
 
-// error handler
-// no stacktraces leaked to user unless in development environment
-app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: (app.get('env') === 'development') ? err : {}
-    });
-});
-
-
-module.exports = app;
+module.import('index', './routes/');
+module.import('index', "./models");
+module.import('index', './controllers/');
+module.import('connection', './config');
+module.import('models', './db/');
+module.import('./config/env');

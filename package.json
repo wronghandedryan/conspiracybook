@@ -1,43 +1,34 @@
 {
-  "name": "conspiracybook",
+  "name": "conspiracy-book",
   "version": "1.0.0",
+  "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "npm run test",
-    "start": "app.js"
+    "test": "npm run test"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.0.0",
-    "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "debug": "^4.1.1",
+    "consolidate": "^0.15.1",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+<<<<<<< HEAD
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
+=======
+>>>>>>> 074a209499fedb5b1427f4b237716691594b19de
     "mysql2": "^2.1.0",
-    "node-pre-gyp": "^0.15.0",
     "pug": "^3.0.0",
-    "sequelize": "^5.21.12",
-    "serve-favicon": "^2.5.0",
-    "tedious": "^8.3.0"
+    "sequelize": "^5.21.13",
+    "sqlite3": "https://github.com/mapbox/node-sqlite3/tarball/master"
   },
   "devDependencies": {
-    "expect.js": "^0.3.1",
-    "mocha": "^8.0.0",
-    "nodemon": "^2.0.4"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wronghandedryan/conspiracybook.git"
-  },
-  "bugs": {
-    "url": "https://github.com/wronghandedryan/conspiracybook/issues"
-  },
-  "homepage": "https://github.com/wronghandedryan/conspiracybook#readme",
-  "description": ""
+    "faker": "^4.1.0",
+    "lodash.random": "^3.2.0",
+    "lodash.times": "^4.3.2",
+    "nodemon": "^2.0.4",
+    "sequelize-cli": "^5.5.1"
+  }
 }
