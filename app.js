@@ -5,15 +5,16 @@ const routes = require('./routes');
 const db = require('./models');
 const bodyParser = require('body-parser');
 const pug = require('pug');
-const faker = require('faker');
+// const faker = require('faker');
 //const dotenv = require("dotenv").config('env.js');
 //const _ = require('lodash');
-pug.compileFile('./views/index.pug');
 
 // API ENDPOINTS
 
 const app = express();
+app.use(express.urlencoded({extended:true}));
 app.use(bodyParser.json());
+app.use(express.static('public'))
 app.set('view engine', 'pug');
 app.use(routes);
 

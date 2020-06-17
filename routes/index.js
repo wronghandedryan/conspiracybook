@@ -1,15 +1,8 @@
-const {
-    Router
-} = require('express');
+const router = require("express").Router()
 const controllers = require('../controllers');
 
-const router = Router();
-
-router.get('/', (req, res) => res.send('Welcome'));
 
 router.post('/posts', controllers.createPost);
-
-module.exports = router;
 
 router.get('/posts', controllers.getAllPosts);
 
@@ -18,5 +11,7 @@ router.get('/posts', controllers.getAllPosts);
 router.put('/posts/:postId', controllers.updatePost);
 
 router.delete('/posts/:postId', controllers.deletePost);
+
+router.use(require("./htmlRoutes"))
 
 module.exports = router;
