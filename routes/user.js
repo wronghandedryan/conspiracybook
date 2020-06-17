@@ -16,7 +16,6 @@ var userData = {
     email: req.body.email,
     password: req.body.password,
     created: Today
-
 }
 
 user.findOne({
