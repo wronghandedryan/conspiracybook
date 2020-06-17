@@ -29,69 +29,68 @@ user.findOne({
             const hash = bcrypt.hashSync(userData.password, 10)
             userData.password = hash
             User.create(user => {
-                    let token = jwt.sign(user.dataValues, process.env.SECRET_KEY,
+                    let token = jwt.sign(user.dataValues, process.env.SECRET_KEY,{
                         expiresIn: 1440
                     })
                 res.json({
                     token: token
                 })
-            }
-            else {
-                res.send('User Does Already Exist.')
             })
         .catch((err) => {
             res.send('error: ', err)
         })
+        }else {
+                res.send('User Does Already Exist.')
+            }
+            
     })
 
 });
 
 
 
-users.get('/profile', (req, res) =>
+users.get('/profile', (req, res) => {
     var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
 
-    User.findOne({
+    user.findOne({
             where: {
                 id: decoded.id
             }
-        }
+        })
         .then(user => {
             if (user) {
                 res.json(user)
             } else {
                 res.send('User Does Not Exist.')
             }
-        }
+        })
         .catch((err) => {
             res.send('error: ', err)
         })
 });
 
 users.post('/login', (req, res) => {
-    User.findOne({
+    user.findOne({
         where: {
             email: req.body.email
-        
+        }})
         .then(user => {
             if (!user) {
                 const hash = bcrypt.compareSync(userData.password, 10)
                 userData.password = hash
-                User.create(user => {
-                        let token = jwt.sign(user.dataValues, process.env.SECRET_KEY,
+                user.create(user => {
+                        let token = jwt.sign(user.dataValues, process.env.SECRET_KEY,{
                             expiresIn: 1440
                         })
                     res.json({
                         token: token
                     });
-                }
-                else {
-                    res.send('User Does Not Exist.')
                 })
-            .catch((err) => {
-
-                res.send('error: ', err)
-            })
+            .catch((err) => res.send('error: ', err))
+            } else {
+                res.send('User Does Not Exist.')
+            }
+            
         })
     
 });
@@ -180,4 +179,4 @@ app.post('../db/', cpUpload, function (req, res, next) {
 
 module.exports('profile');
 
-module.exports = Users;
+module.exports = users;

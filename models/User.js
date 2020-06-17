@@ -1,41 +1,43 @@
-const {
-    Sequelize,
-    Model,
-    DataTypes,
-    BOOLEAN
-} = require('sequelize');
-const sequelize = new Sequelize('mysql::memory:');
+module.exports = (sequelize, type) => {
+    const User = sequelize.define('User', {
+        username: {
+            type: type.STRING
+        },
+        firstName: {
+            type: type.STRING
+        },
+        lastName: {
+            type: type.STRING
+        },
+        email: {
+            type: type.STRING
+        },
+        passwordHash: {
+            type: type.STRING
+        },
+        registeredAt: {
+            type: type.DATE,
+            defaultValue: type.NOW
+        },
+        lastLogin: {
+             type: type.STRING,
+         },
+        intro: {
+              type: type.STRING,
+          },
+        profile: {
+                type: type.STRING,
+        },
+    })
 
-class User extends Model {}
-User.init({
-    type: BOOLEAN,
-    username: DataTypes.STRING,
-    birthday: DataTypes.DATE,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING
+    User.associate = function(models) {
+        // We're saying that a Post should belong to an Author
+        // A Post can't be created without an Author due to the foreign key constraint
+        User.hasMany(models.Post, {
+            foreignKey: "userId",
+            onDelete: "CASCADE",
+        });
+      };
 
-}, {
-    sequelize,
-    modelName: 'user'
-});{}
-
-sequelize.sync()
-    .then(() => User.create({
-        username: 'janedoe',
-        birthday: new Date(1980, 6, 20)
-    }))
-    .then(jane => {
-        console.log(jane.toJSON());
-    });
-    User.hasOne('user');
-
-
-
-module.exports = (sequelize, type) => sequelize.define('user', {
-    id: {
-        type: type.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    name: type.STRING
-});
+      return User;
+}  
