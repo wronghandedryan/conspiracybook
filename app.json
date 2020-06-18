@@ -6,10 +6,8 @@
     "nodejs",
     "fullstack"
     ],
-    "website": "wronghandedryan/conspiracybook
-
-    ",
-    "repository": "https://github.com/jane-doe/small-sharp-tool",
+    "website": "github.com/wronghandedryan/conspiracybook",
+    "repository": "github.com/wronghandedryan/conspiracybook",
     "logo": "",
     "success_url": "/#",
     "scripts": {
@@ -57,4 +55,4 @@
         }
       }
     }
-  }
+  

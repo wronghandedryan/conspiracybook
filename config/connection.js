@@ -2,6 +2,8 @@
 const Sequelize = require('sequelize');
 var mysql = require('mysql');
 // what is checkout? -RO
+var connection = mysql.createConnection(process.env.JAWSDB_URL);
+
 const { checkout } = require('../routes');
 
 const sequelize = new Sequelize('database', 'username', 'password', {
