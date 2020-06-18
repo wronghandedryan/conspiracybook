@@ -12,7 +12,7 @@
     "password": null,
     "database": "database_test",
     "host": "127.0.0.1",
-    "port": 8889,
+    "port": 3306,
     "dialect": "mysql"
   },
   "production": {
@@ -20,13 +20,13 @@
     "password": null,
     "database": "database_production",
     "host": "127.0.0.1",
-    "port": 8889,
+    "port": 3306,
     "dialect": "mysql"
   },
     "server": {
         "dialect": "mysql",
         "host": "localhost",
-        "port": 8889,
+        "port": 3306,
         "database": "conspbook_db",
         "username": "root",
         "password": "root",
