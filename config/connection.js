@@ -6,7 +6,7 @@ var connection = mysql.createConnection(process.env.JAWSDB_URL);
 
 const { checkout } = require('../routes');
 
-const sequelize = new Sequelize('database', 'username', 'password', {
+const sequelize = newSequelize('doxvfxz4qqsdi6tw', 'rw3oau02yfwjz6xvq', 'w3oau02yfwjz6xvq', {
   dialect: 'mysql'
 })
 
@@ -17,7 +17,7 @@ if (process.env.JAWSDB_URL) {
   host: 'm7nj9dclezfq7ax1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
   port: 3306,
   user: 'rw3oau02yfwjz6xvq',
-  password: 'doxvfxz4qqsdi6tw',
+  password: 'w3oau02yfwjz6xvq',
   database: 'doxvfxz4qqsdi6tw'
 });
 }
