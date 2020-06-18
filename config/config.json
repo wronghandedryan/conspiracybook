@@ -20,19 +20,21 @@
     "url": "mysql://j3pcyapnm78jdgvn:w3oau02yfwjz6xvq@m7nj9dclezfq7ax1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/doxvfxz4qqsdi6tw",
     "username": "j3pcyapnm78jdgvn",
     "password": "w3oau02yfwjz6xvq",
-    "database": "database_production",
+    "database": "doxvfxz4qqsdi6tw",
     "host": "m7nj9dclezfq7ax1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "port": 3306,
     "dialect": "mysql"
   },
     "server": {
       "url": "mysql://j3pcyapnm78jdgvn:w3oau02yfwjz6xvq@m7nj9dclezfq7ax1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/doxvfxz4qqsdi6tw",
-        "dialect": "mysql",
+        
         "host": "m7nj9dclezfq7ax1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-        "port": 3306,
+       
         "database": "conspbook_db",
         "username": "j3pcyapnm78jdgvn",
         "password": "w3oau02yfwjz6xvq",
+        "dialect": "mysql",
+        "port": 3306,
         "define": {}
     },
     "models": {
