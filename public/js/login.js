@@ -10,11 +10,11 @@ let createAccount = () => {
     let password = $('#createPassword').val();
   
     addUser({
-      username: username,
-      firstName: firstName,
-      lastName: lastName,
-      email:  email,
-      password: password,
+      username: "username",
+      firstName: "firstName",
+      lastName: "lastName",
+      email:  "email",
+      password: "password",
     });
 
   }

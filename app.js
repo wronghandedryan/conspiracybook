@@ -50,7 +50,7 @@ db.sequelize.sync().then(() => {
     //        // authorId: Math.ceil(Math.random() * 10)
     //     }))
     // );
-    app.listen(4000, () => console.log("App listening on port 4000!"));
+    app.listen(3000, () => console.log("App listening on port 3000!"));
     })
     .catch(err => {
         console.error('Unable to connect to the database:', err);
