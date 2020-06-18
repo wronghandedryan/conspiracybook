@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "express-sequelize",
     "start": "node app.js"
   },
   "author": "Not the Goverment ;)",
