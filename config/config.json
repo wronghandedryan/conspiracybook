@@ -1,11 +1,10 @@
 {
       "development": {
-        "url": "mysql://j3pcyapnm78jdgvn:w3oau02yfwjz6xvq@m7nj9dclezfq7ax1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/doxvfxz4qqsdi6tw",
-    "username": "j3pcyapnm78jdgvn",
-    "password": "w3oau02yfwjz6xvq",
-    "database": "doxvfxz4qqsdi6tw",
-    "host": "m7nj9dclezfq7ax1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "port": 3306,
+    "username": "root",
+    "password": "root",
+    "database": "project2_db",
+    "host": "localhost",
+    "port": 8889,
     "dialect": "mysql"
   },
   "test": {

@@ -1,40 +1,21 @@
 
 const multer = require('multer');
 const upload = multer({dest: 'uploads/'});
+const router = require("express").Router();
+const db = require("../models");
+const bcrypt = require("bcryptjs");
 
+router.post('/register', (req, res) => {
 
-const user = require('../models/user');
-
-
-process.env.SECRET_KEY = 'secret'
-
-user.post('/register', (req, res) => {
-//const today = new Date();
-var userData = {
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    email: req.body.email,
-    password: req.body.password,
-    created: Today
-}
-
-user.findOne({
+db.User.findOne({
         where: {
             email: req.body.email
         }
     })
     .then(user => {
         if (!user) {
-            const hash = bcrypt.hashSync(userData.password, 10)
-            userData.password = hash
-            User.create(user => {
-                    let token = jwt.sign(user.dataValues, process.env.SECRET_KEY,{
-                        expiresIn: 1440
-                    })
-                res.json({
-                    token: token
-                })
-            })
+            const passwordHash = bcrypt.hashSync(req.body.password, 10)
+            db.User.create({...req.body, passwordHash})
         .catch((err) => {
             res.send('error: ', err)
         })
@@ -46,12 +27,26 @@ user.findOne({
 
 });
 
+// Find log in info
+router.post('/login', async (req, res) => {
+    console.log(req.body)
+    db.User.findOne({ where: { username: req.body.username } }).then(async(user) => {
+        console.log(user)
+      if(!user){
+          res.json("Username Doesn't exist");
+      }else{
+          const match = await bcrypt.compareSync(req.body.password, user.passwordHash)
+          match ? res.json(user) : res.json("Incorrect Password!")
+      }
+  });
+})
 
 
-users.get('/profile', (req, res) => {
+
+router.get('/profile', (req, res) => {
     var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
 
-    user.findOne({
+    db.User.findOne({
             where: {
                 id: decoded.id
             }
@@ -68,35 +63,10 @@ users.get('/profile', (req, res) => {
         })
 });
 
-users.post('/login', (req, res) => {
-    user.findOne({
-        where: {
-            email: req.body.email
-        }})
-        .then(user => {
-            if (!user) {
-                const hash = bcrypt.compareSync(userData.password, 10)
-                userData.password = hash
-                user.create(user => {
-                        let token = jwt.sign(user.dataValues, process.env.SECRET_KEY,{
-                            expiresIn: 1440
-                        })
-                    res.json({
-                        token: token
-                    });
-                })
-            .catch((err) => res.send('error: ', err))
-            } else {
-                res.send('User Does Not Exist.')
-            }
-            
-        })
-    
-});
 
-users.get('/profile', (req, res) => {
+router.get('/profile', (req, res) => {
     var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
-    User.findOne({
+    db.User.findOne({
             where: {
                 id: decoded.id
             }
@@ -112,7 +82,8 @@ users.get('/profile', (req, res) => {
             res.send('error: ', err)
         })
 });
-app.post('/upload-avatar', async (req, res) => {
+
+router.post('/upload-avatar', async (req, res) => {
     try {
         if (!req.files) {
             res.send({
@@ -141,12 +112,13 @@ app.post('/upload-avatar', async (req, res) => {
         res.status(500).send(err);
     }
 });
-app.post('/profile', upload.single('avatar'), function (req, res, next) {
+
+router.post('/profile', upload.single('avatar'), function (req, res, next) {
     // req.file is the `avatar` file
     // req.body will hold the text fields, if there were any
 })
 
-app.post('/photos/upload', upload.array('photos', 12), function (req, res, next) {
+router.post('/photos/upload', upload.array('photos', 12), function (req, res, next) {
     // req.files is array of `photos` files
     // req.body will contain the text fields, if there were any
 })
@@ -166,7 +138,9 @@ var cpUpload = upload.fields([{
     name: 'gallery',
     maxCount: 8
 }])
-app.post('../db/', cpUpload, function (req, res, next) {
+
+
+router.post('../db/', cpUpload, function (req, res, next) {
     // req.files is an object (String -> Array) where fieldname is the key, and the value is array of files
     //
     // e.g.
@@ -176,6 +150,4 @@ app.post('../db/', cpUpload, function (req, res, next) {
     // req.body will contain the text fields, if there were any
 });
 
-module.exports('profile');
-
-module.exports = users;
+module.exports = router;

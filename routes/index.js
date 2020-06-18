@@ -12,6 +12,8 @@ router.put('/posts/:postId', controllers.updatePost);
 
 router.delete('/posts/:postId', controllers.deletePost);
 
+router.use("/user", require("./user"))
+
 router.use(require("./htmlRoutes"))
 
 module.exports = router;
