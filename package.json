@@ -3,16 +3,17 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node src/app.js",
-    "run": "nodemon start dev"
+    "test": "express-sequelize",
+    "start": "nodemon start dev"
   },
-  "author": "",
+  "author": "Not the Goverment ;)",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
     "consolidate": "^0.15.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-sequelize": "0.0.4",
     "mysql2": "^2.1.0",
     "pug": "^3.0.0",
     "sequelize": "^5.21.13",
