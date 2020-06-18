@@ -6,7 +6,7 @@ const db = require('./models');
 const bodyParser = require('body-parser');
 const pug = require('pug');
 // const faker = require('faker');
-//const dotenv = require("dotenv").config('env.js');
+//const dotenv = require("dotenv").config('');
 //const _ = require('lodash');
 
 // API ENDPOINTS
