@@ -1,11 +1,11 @@
 const router = require('express').Router();
 
 
-router.get('/', (req,res)=>{
+router.get('/', (_req,res)=>{
     res.render("index")
 });
 
-router.get("/login", (req,res)=>{
+router.get("/login", (_req,res)=>{
     res.render('login')
 })
 
