@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "npm run test",
+    "start": "node src/app.js",
     "run": "nodemon start dev"
   },
   "author": "",

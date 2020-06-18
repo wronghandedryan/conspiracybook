@@ -1,0 +1,21 @@
+{
+	"id": "28368e24-13a9-4c59-aaf9-921aebbbaeb3",
+	"name": "Designing an API",
+	"timestamp": "2020-06-17T23:32:23.574Z",
+	"collection_id": "cd2945a6-2935-4f00-a9cf-752c49bd3829",
+	"folder_id": 0,
+	"environment_id": "b77578ad-f189-488b-8813-24b8582e1de0",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [],
+	"count": 1,
+	"totalTime": 0,
+	"collection": {
+		"requests": [
+			{
+				"id": "c802c02c-be99-48a4-9829-9c4dc6c43eaf",
+				"method": "POST"
+			}
+		]
+	}
+}
