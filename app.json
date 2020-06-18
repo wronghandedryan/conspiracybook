@@ -1,0 +1,60 @@
+{
+    "name": "Conspiracy-Book",
+    "description": "a place to keep the crazies togheter.",
+    "keywords": [
+    "social media",
+    "nodejs",
+    "fullstack"
+    ],
+    "website": "wronghandedryan/conspiracybook
+
+    ",
+    "repository": "https://github.com/jane-doe/small-sharp-tool",
+    "logo": "",
+    "success_url": "/#",
+    "scripts": {
+      "postdeploy": "bundle exec rake bootstrap"
+    },
+    "env": {
+      "SECRET_TOKEN": {
+        "description": "A secret key for verifying the integrity of signed cookies.",
+        "generator": "secret"
+      },
+      "WEB_CONCURRENCY": {
+        "description": "The number of processes to run.",
+        "value": "5"
+      }
+    },
+    "formation": {
+      "web": {
+        "quantity": 1,
+        "size": "standard-1x"
+      }
+    },
+    "image": "heroku/nodejs",
+    "addons": [
+      "jawsdb",
+      {
+        "plan": "mongolab:shared-single-small",
+        "as": "Jawsdb"
+      },
+      {
+        "plan": "heroku-postgresql",
+        "options": {
+          "version": "9.5"
+        }
+      }
+    ],
+    "buildpacks": [
+      {
+        "url": "https://github.com/stomita/heroku-buildpack-nodejs"
+      }
+    ],
+    "environments": {
+      "test": {
+        "scripts": {
+          "test": "bundle exec rake test"
+        }
+      }
+    }
+  }
