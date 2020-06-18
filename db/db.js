@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 
-var sequelize = new Sequelize('conspbook_db', 'root', 'root', {
-    host: '127.0.0.1',
-    port: '8889',
+var sequelize = new Sequelize("doxvfxz4qqsdi6tw", "j3pcyapnm78jdgvn", "w3oau02yfwjz6xvq", {
+    host: 'm7nj9dclezfq7ax1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    port: '3306',
     dialect: 'mysql'
 });
 
