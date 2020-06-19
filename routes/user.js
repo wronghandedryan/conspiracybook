@@ -6,13 +6,13 @@ const db = require("../models");
 const bcrypt = require("bcryptjs");
 
 router.post('/register', (req, res) => {
-
 db.User.findOne({
         where: {
             email: req.body.email
         }
     })
     .then(user => {
+        console.log(user)
         if (!user) {
             const passwordHash = bcrypt.hashSync(req.body.password, 10)
             db.User.create({...req.body, passwordHash})

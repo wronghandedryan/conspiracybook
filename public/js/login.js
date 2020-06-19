@@ -9,6 +9,7 @@ let createAccount = () => {
   let email = $("#email").val().trim();
   let password = $("#password").val();
 
+  console.log(email)
   addUser({
     username,
     firstName,
@@ -19,6 +20,7 @@ let createAccount = () => {
 };
 
 let addUser = (userData) => {
+  console.log(userData)
   $.post("/user/register", userData);
 };
 
