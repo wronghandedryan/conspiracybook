@@ -1,0 +1,41 @@
+body {  
+  display: flex;
+  height: 100vh;
+  background-color: darkgray;
+  vertical-align: middle;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.button {
+  color: white;
+  border-radius: 50px;
+  height: 50px;
+  justify-content: center;
+  font-size: 24px;
+}
+
+input {
+  background-color: black;
+  border: 0;
+  border-radius: 50px;
+  width: 292px;
+  height: 50px;
+  align-content: center;
+}
+
+.customBtn, .txtBox {
+  width: 292px;
+  border-radius: 20px;
+  margin: 20px auto;
+}
+
+.customBtn {
+  background: black;
+}
+
+p {
+  padding: 0;
+}

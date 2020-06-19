@@ -1,47 +1,58 @@
+const express = require('express');
+const routes = require('./routes');
+//const controllers = require('./controllers');
+//const db = require('./db/db.js');
+const db = require('./models');
+const bodyParser = require('body-parser');
+const pug = require('pug');
+// const faker = require('faker');
+//const dotenv = require("dotenv").config('');
+//const _ = require('lodash');
 
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+// API ENDPOINTS
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-
-var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
+const app = express();
+app.use(express.urlencoded({extended:true}));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'))
+app.set('view engine', 'pug');
+app.use(routes);
 
-app.use('/', routes);
-app.use('/users', users);
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
 
-// error handler
-// no stacktraces leaked to user unless in development environment
-app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: (app.get('env') === 'development') ? err : {}
+// apiPost(app, db);
+// apiAuthor(app, db);
+function times(n, callback){
+    const output = []
+    for(i = 0; i < n; i++){
+        output.push(callback())
+    }
+    return output
+}
+
+db.sequelize.sync().then(() => {
+    db.sequelize
+    .authenticate()
+    .then(() => {
+        console.log('Connection has been established successfully.');
+            // populate author table with dummy data
+    // db.User.bulkCreate(
+    //     times(10, () => ({
+    //         firstName: faker.name.firstName(),
+    //         lastName: faker.name.lastName()
+    //     }))
+    // );
+    // // populate post table with dummy data
+    // db.Post.bulkCreate(
+    //     times(10, () => ({
+    //         title: faker.lorem.sentence(),
+    //         content: faker.lorem.paragraph(),
+    //        // authorId: Math.ceil(Math.random() * 10)
+    //     }))
+    // );
+    app.listen(3000, () => console.log("App listening on port 3000!"));
+    })
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
     });
 });
-
-
-module.exports = app;
