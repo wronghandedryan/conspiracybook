@@ -1,5 +1,6 @@
 $(document).ready(() => {
-
+    const user = localStorage.getItem("currentUser") ? JSON.parse(localStorage.getItem("currentUser")) : null;
+    
     function createProfile(username) {
       User.findAll({
         where: {

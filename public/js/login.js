@@ -1,26 +1,33 @@
 //login with jqeury and ajax
 //signup with jquwery and ajax
 let createAccount = () => {
-    event.preventDefault();
-  
-    let username = $('#createUsername').val().trim();
-    let firstName = $('#firstName').val().trim();
-    let lastName = $('#lastName').val().trim();
-    let email = $('#lastName').val().trim();
-    let password = $('#createPassword').val();
-  
-    addUser({
-      username: "username",
-      firstName: "firstName",
-      lastName: "lastName",
-      email:  "email",
-      password: "password",
-    });
+  event.preventDefault();
+  console.log("clickeds!");
+  let username = $("#username").val().trim();
+  let firstName = $("#fname").val().trim();
+  let lastName = $("#lname").val().trim();
+  let email = $("#email").val().trim();
+  let password = $("#password").val();
 
-  }
-  
-  let addUser = (userData) => {
-    $.post('/create-account', userData);
-  }
-  
-  $('#createAccount').on('click', createAccount);
+  console.log(email)
+  addUser({
+    username,
+    firstName,
+    lastName,
+    email,
+    password,
+  });
+};
+
+let addUser = (userData) => {
+  console.log(userData)
+  $.post("/user/register", userData);
+};
+
+$("#createAccount").on("click", createAccount);
+$("#loginBtn").on("click", () => {
+  $.post("/user/login", {
+    username: $("#usernameForm").val().trim(),
+    password: $("#passForm").val().trim(),
+  }).then(data=> data.username? (localStorage.setItem("currentUser", JSON.stringify(data)), location.replace('/member')) : alert(data))
+});
